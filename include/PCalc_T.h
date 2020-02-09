@@ -4,14 +4,17 @@
 #include "PCalc.h"
 #include <vector>
 
-// Your implementation of PCalc_T class should go here.
-// Make sure your constructor takes in two parameters:
-//
-// PCalc_T::PCalc_T(unsigned int array_size, unsigned int num_threads);
-//
-// Call the parent constructor when initializing your constructor and pass in array_size. Then
-// use num_threads to cap off how many threads you use to calculate all prime numbers
-
+/********************************************************************************************
+ * PCalc_T : Prime number calculation class. Inherits from base class PCalc. This class works
+ * with multiple threads. 
+ *
+ *	PCalc_T(Const): takes the array size (max number to count up to) and numThreads and
+ *	initializes
+ *	markNonPrimes() : sets all composite numbers in range 0->arraySize to false in 
+ *	PCalc::primelist
+ *
+ *	~PCalc_T(Dest): cleans up memory
+ *******************************************************************************************/
 class PCalc_T : public PCalc
 {
 	public:
@@ -21,10 +24,9 @@ class PCalc_T : public PCalc
 
 		bool checkIfThreadProcessingIdx(unsigned int idx);
 	private:
-		unsigned int arraySize = 0;
-		unsigned int numThreads;
-		//std::vector<unsigned int> *threadMins; // vector to hold current elem thread marking off	
-		unsigned int *threadMins;
+		unsigned int arraySize = 0; // number to count up to
+		unsigned int numThreads; // number of threads to use in sieve
+		unsigned int *threadMins; // for each thread, tracks the minimum number being processed by a given thread (not used; poor performance metrics observed)
 };
 
 #endif

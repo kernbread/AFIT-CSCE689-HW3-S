@@ -3,7 +3,16 @@
 
 #include "PCalc.h"
 
-
+/*********************************************************************************************
+ * PCalc_SP : Prime number calculation class. Inherits from base class PCalc. This class works
+ * serially (i.e. one thread). 
+ *
+ * 	PCalc_SP(Const): takes the array size (max number to count up to) and initializes
+ * 	markNonPrimes(): sets all composite numbers in range 0->arraySize to false in
+ * 	PCalc::primelist.
+ *
+ * 	~PCalc_SP(Dest): cleans up memory
+ *********************************************************************************************/
 class PCalc_SP : public PCalc
 {
 	public:
@@ -11,13 +20,7 @@ class PCalc_SP : public PCalc
 		~PCalc_SP();
 		void markNonPrimes();
 	private:
-		unsigned int arraySize = 0;
-	
+		unsigned int arraySize = 0; // max number to count up to
 };
-// Add your PCalc_SP class definition here as a child class of PCalc
-// Be sure to overload the right methods from PCalc or it won't compile
-
-// This class should manage the single process implementation of the prime number generator. I'd recommend
-// getting this working first, then tackling multithreaded
 
 #endif
