@@ -72,6 +72,11 @@ void PCalc_T::markNonPrimes() {
 			// c/c++ come equipt with a methodology to handle it with ease.
 			// If this didn't exist, I would have had to create a thread pool
 			// and pass the worker threads lambdas to execute (the for loop above).
+			// I've done a fair amount of work with Java, and frequently use parallel 
+			// streams (similiar concept to omp). Below is the link I used to find out
+			// about c/c++'s approach to solving this problem:
+			// https://stackoverflow.com/questions/36246300/parallel-loops-in-c/36246386
+	
 		} // else, i is a multiple of some prime, therefore skip
 	}
 }
