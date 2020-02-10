@@ -79,6 +79,20 @@ void PCalc_T::markNonPrimes() {
 	
 		} // else, i is a multiple of some prime, therefore skip
 	}
+
+	// Notes about race conditions in the above implementation...
+	// I attempted to use a function called checkIfThreadProcessingIdx to ensure that the 
+	// main thread did not get ahead of the minimum value processed on the parallel threads
+	// that are marking off numbers. However, this caused the algorithm to run over 2x slower!
+	// So since I am not protecting against this, it 'could' happen in some situations. However,
+	// such race conditions do not impose dangers. The only thing is there could be duplication
+	// of work. However, due to the overhead encurred by adding the additional functionality to 
+	// check for race conditions, this imposed more overhead than simply doing the above approach.
+	//
+	// Also, no race conditions occur when altering the primelist. This is because the only
+	// update happening to that array are setting various array elements to false. Thus, 
+	// duplication of such work does not impose any issues (worst case scenario is given element 
+	// of primelist is set to false more than once).  
 }
 
 /* ~PCalc_T : destructor; cleans up PCalc_T and PCalc base before destroying objects. */
