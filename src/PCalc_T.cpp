@@ -10,7 +10,7 @@ PCalc_T::PCalc_T(const unsigned int& arraySize, unsigned int numThreads) : PCalc
 	this->arraySize = arraySize;
 	this->numThreads = numThreads;
 
-	omp_set_num_threads(numThreads); // set number of threads for omp to use
+	omp_set_num_threads(numThreads); // set number of threads for omp to use (i.e. creates a thread pool of size 'numThreads' for which omp will utilize)
 	
 	memset(threadMins, 0, sizeof(unsigned int)*numThreads);
 }
